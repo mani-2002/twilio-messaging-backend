@@ -5,6 +5,14 @@ const routes = require("./routes/routes");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://twiliomsg.vercel.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use("/", routes);
 
